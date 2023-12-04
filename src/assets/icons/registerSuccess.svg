@@ -1,0 +1,24 @@
+<svg width="141" height="134" viewBox="0 0 141 134" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="15" cy="8" r="8" fill="#1776E8"/>
+<circle cx="135" cy="30" r="6" fill="#1776E8"/>
+<circle cx="4" cy="75" r="4" fill="#1776E8"/>
+<circle cx="87" cy="8" r="4" fill="#1776E8"/>
+<circle cx="47" cy="132" r="2" fill="#1776E8"/>
+<circle cx="21" cy="40" r="2" fill="#1776E8"/>
+<circle cx="125" cy="110" r="1" fill="#1776E8"/>
+<circle cx="133" cy="58" r="2" fill="#1776E8"/>
+<circle cx="73" cy="78" r="50" fill="url(#paint0_linear_109_668)"/>
+<g clip-path="url(#clip0_109_668)">
+<path d="M91.2938 94.3391C90.3842 87.7741 84.9661 83.0679 78.3616 83.0679C74.6441 83.0679 70.9661 83.0679 67.2486 83.0679C61.1186 83.0679 56.0565 86.904 54.5141 92.8362C54.2373 93.8645 54.1582 94.9323 54 96.0001C66.5367 96.0001 78.9153 96.0001 91.4124 96.0001C91.3729 95.4069 91.3729 94.8532 91.2938 94.3391Z" fill="white"/>
+<path d="M72.7458 81.3673C78.243 81.4068 82.8701 76.8588 82.9492 71.2825C82.9887 65.7063 78.5198 61.0792 72.904 61.0001C67.2882 60.921 62.6611 65.3899 62.582 70.9662C62.5029 76.7006 67.0113 81.2882 72.7458 81.3673Z" fill="white"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_109_668" x1="73" y1="28" x2="73" y2="128" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1776E8"/>
+<stop offset="1" stop-color="#62A9FF"/>
+</linearGradient>
+<clipPath id="clip0_109_668">
+<rect width="37.4124" height="35" fill="white" transform="translate(54 61)"/>
+</clipPath>
+</defs>
+</svg>

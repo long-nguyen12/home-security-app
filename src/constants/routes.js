@@ -1,0 +1,33 @@
+export const LOGIN_PAGE = "LOGIN_PAGE";
+export const LOGIN_SMS = "LOGIN_SMS";
+export const REGISTER_PAGE = "REGISTER_PAGE";
+export const FORGOTPASSWORD_PAGE = "FORGOTPASSWORD_PAGE";
+export const PHONE_PAGE = "PHONE_PAGE";
+export const RESETPASSWORD_PAGE = "RESETPASSWORD_PAGE";
+
+export const APP_LOADER = "APP_LOADER";
+export const APP_AUTH = "APP_AUTH";
+export const APP_MAIN = "APP_MAIN";
+
+export const MAIN = "MAIN";
+export const HOME_PAGE = "HOME_PAGE";
+export const HOATDONGCHINHQUYEN = "HOATDONGCHINHQUYEN";
+export const CHITIETTINTUC = "CHITIETTINTUC";
+
+export const MENU_PAGE = "MENU_PAGE";
+export const SETTING_PAGE = "SETTING_PAGE";
+export const CANHAN_PAGE = "CANHAN_PAGE";
+
+export const THONGBAO_PAGE = "THONGBAO_PAGE";
+export const THONGBAO_CHITIET = "THONGBAO_CHITIET";
+
+export const SCAN_CAMERA_PAGE = "SCAN_CAMERA_PAGE";
+export const CAMERA_PAGE = "CAMERA_PAGE";
+export const CREATE_CAMERA_PAGE = "CREATE_CAMERA_PAGE";
+export const DETAIL_CAMERA_PAGE = "DETAIL_CAMERA_PAGE";
+
+export const SCAN_PAGE = "SCAN_PAGE";
+export const SCAN_AREA_PAGE = "SCAN_AREA_PAGE";
+
+export const HISTORY_PAGE = "HISTORY_PAGE";
+export const HISTORY_DETAIL_PAGE = "HISTORY_DETAIL_PAGE";

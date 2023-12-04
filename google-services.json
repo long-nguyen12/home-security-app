@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "250522666188",
+    "project_id": "home-security-13375",
+    "storage_bucket": "home-security-13375.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:250522666188:android:a328d439782fe4a1126e69",
+        "android_client_info": {
+          "package_name": "com.longnh.crazy.HomeSecurity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmQkpnHYhXEdnOnCm7OJPLacddX5vvhEc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
