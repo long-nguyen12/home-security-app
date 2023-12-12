@@ -89,6 +89,7 @@ export default function DetectionAreaScreen(props) {
 
           onStartShouldSetResponder={() => true}
           onResponderGrant={handlePress}
+          onActi
         />
         <Svg
           ref={svgRef}
@@ -156,10 +157,10 @@ export default function DetectionAreaScreen(props) {
       </View>
       <Drawing />
       <View style={[tw.flexRow, tw.mY2, tw.selfCenter]}>
-        <Button style={[tw.selfCenter, tw.mX2]} onPress={onReset} size="small">
+        <Button style={[tw.selfCenter, tw.mX2]} onPress={onReset}>
           <Text style={{ color: "black" }}>Vẽ lại</Text>
         </Button>
-        <Button style={[tw.selfCenter, tw.mX2]} onPress={onSubmit} size="small">
+        <Button style={[tw.selfCenter, tw.mX2]} onPress={onSubmit}>
           <Text style={{ color: "black" }}>Tiếp tục</Text>
         </Button>
       </View>

@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from "react";
-import { Image, ScrollView, TouchableOpacity, View } from "react-native";
+import { Dimensions, Image, ScrollView, TouchableOpacity, View } from "react-native";
 import { tw } from "react-native-tailwindcss";
 import BackIcon from "../../assets/icons/whitearrow.svg";
 import HomeIcon from "../../assets/menu_ico/homeon.svg";
@@ -71,7 +71,15 @@ export default function ChiTietLichSu(props) {
         source={{
           uri: `${COMMON_APP.HOST_API}/detection/${data.result_path}`,
         }}
-        style={[tw.hFull, tw._mT24]}
+        style={[
+          tw.flexRow,
+          tw.itemsCenter,
+          tw.selfCenter,
+          {
+            width: Dimensions.get("window").width,
+            height: Dimensions.get("window").height / 3,
+          },
+        ]}
       />
     </View>
   );

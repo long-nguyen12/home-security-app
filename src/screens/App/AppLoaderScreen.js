@@ -7,25 +7,25 @@ import SplashScreen from "./SplashScreen";
 import * as ROUTES from "../../constants/routes";
 
 export default function AppLoaderScreen(props) {
-    const { navigation } = props;
+  const { navigation } = props;
 
-    const token = useSelector((state) => state.auth);
+  const token = useSelector((state) => state.auth);
+  console.log(token);
+  React.useEffect(() => {
+    if (token) {
+      navigation.replace(ROUTES.APP_MAIN);
+    } else {
+      navigation.replace(ROUTES.APP_AUTH);
+    }
+  }, []);
 
-    React.useEffect(() => {
-        if (token) {
-            navigation.replace(ROUTES.APP_MAIN);
-        } else {
-            navigation.replace(ROUTES.APP_AUTH);
-        }
-    }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      return async () => {
+        await SplashScreen.hideAsync();
+      };
+    }, [])
+  );
 
-    useFocusEffect(
-        React.useCallback(() => {
-            return async () => {
-                await SplashScreen.hideAsync();
-            };
-        }, [])
-    );
-
-    return null;
+  return null;
 }

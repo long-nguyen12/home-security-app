@@ -1,5 +1,11 @@
 import React, { useLayoutEffect } from "react";
-import { Image, ScrollView, TouchableOpacity, View } from "react-native";
+import {
+  Dimensions,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { tw } from "react-native-tailwindcss";
 import BackIcon from "../../assets/icons/whitearrow.svg";
 import HomeIcon from "../../assets/menu_ico/homeon.svg";
@@ -49,22 +55,30 @@ export default function ChiTietThongBao(props) {
   console.log(`${COMMON_APP.HOST_API}/detection/${data.detection_path}`);
 
   return (
-    <View style={[containerStyles.content, tw.pT4, tw.pX4]}>
+    <ScrollView
+      style={[containerStyles.content]}
+      contentContainerStyle={[tw.pT4, tw.pX4]}
+    >
       {/* <ScrollView style={[containerStyles.content, tw.pT4, tw.pX4]}> */}
       <Text style={[tw.fontBold, tw.textJustify]}>
         Phát hiện đối tượng trong vùng theo dõi
       </Text>
       <Text style={{ color: "#878787" }}>{timeFormatter(data.created_at)}</Text>
-      <View style={[tw.flex1]}>
-        <Image
-          resizeMode="contain"
-          source={{
-            uri: `${COMMON_APP.HOST_API}/detection/${data.detection_path}`,
-          }}
-          style={[tw.hFull, tw._mT24]}
-        />
-      </View>
-      {/* </ScrollView> */}
-    </View>
+      <Image
+        resizeMode="contain"
+        source={{
+          uri: `${COMMON_APP.HOST_API}/detection/${data.detection_path}`,
+        }}
+        style={[
+          tw.flexRow,
+          tw.itemsCenter,
+          tw.selfCenter,
+          {
+            width: Dimensions.get("window").width,
+            height: Dimensions.get("window").height / 3,
+          },
+        ]}
+      />
+    </ScrollView>
   );
 }

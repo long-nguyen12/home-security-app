@@ -9,11 +9,10 @@ import {
 } from "react-native";
 import { tw } from "react-native-tailwindcss";
 import { useSelector } from "react-redux";
+import EmptyImage from "../../assets/empty_box.svg";
 import WarningIcon from "../../assets/icons/ico_warning.svg";
-import LoadingService from "../../components/Loading/LoadingService";
-import { API } from "../../constants";
 import { PRIMARY } from "../../constants/colors";
-import { APP_AUTH, LOGIN_PAGE, THONGBAO_CHITIET } from "../../constants/routes";
+import { THONGBAO_CHITIET } from "../../constants/routes";
 import { getCanhBao } from "../../epics-reducers/services/canhbaoServices";
 import { timeFormatter } from "../../helper/dateFormat";
 import { containerStyles } from "../../stylesContainer";
@@ -149,6 +148,16 @@ export default function ThongbaoPage(props) {
       </TouchableOpacity>
     );
   }
+  function renderEmpty() {
+    return (
+      <View style={[tw.selfCenter, tw.p4]}>
+        <EmptyImage />
+        <Text style={[tw.selfCenter, { color: PRIMARY }]}>
+          Không tìm thấy kết quả!
+        </Text>
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView style={[containerStyles.content]}>
@@ -162,7 +171,7 @@ export default function ThongbaoPage(props) {
         renderItem={renderCanhBao}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={renderSeparator}
-        // ListEmptyComponent={renderEmpty}
+        ListEmptyComponent={renderEmpty}
         refreshing={loadStatus === LOAD_STATUS.PULL_REFRESH}
         onRefresh={onGetPullRefresh}
         onEndReached={onLoadMore}

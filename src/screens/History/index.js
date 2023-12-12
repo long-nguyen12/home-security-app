@@ -4,14 +4,11 @@ import { FlatList, SafeAreaView, TouchableOpacity, View } from "react-native";
 import { tw } from "react-native-tailwindcss";
 import { useSelector } from "react-redux";
 import WarningIcon from "../../assets/icons/ico_warning.svg";
+import EmptyImage from "../../assets/empty_box.svg";
 import LoadingService from "../../components/Loading/LoadingService";
 import { PRIMARY } from "../../constants/colors";
-import {
-  HISTORY_DETAIL_PAGE
-} from "../../constants/routes";
-import {
-  getHistory
-} from "../../epics-reducers/services/canhbaoServices";
+import { HISTORY_DETAIL_PAGE } from "../../constants/routes";
+import { getHistory } from "../../epics-reducers/services/canhbaoServices";
 import { timeFormatter } from "../../helper/dateFormat";
 import { containerStyles } from "../../stylesContainer";
 
@@ -165,6 +162,17 @@ export default function HistoryPage(props) {
     );
   }
 
+  function renderEmpty() {
+    return (
+      <View style={[tw.selfCenter, tw.p4]}>
+        <EmptyImage />
+        <Text style={[tw.selfCenter, { color: PRIMARY }]}>
+          Không tìm thấy kết quả!
+        </Text>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView style={[containerStyles.content]}>
       <FlatList
@@ -174,7 +182,7 @@ export default function HistoryPage(props) {
         renderItem={renderCanhBao}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={renderSeparator}
-        // ListEmptyComponent={renderEmpty}
+        ListEmptyComponent={renderEmpty}
         refreshing={loadStatus === LOAD_STATUS.PULL_REFRESH}
         onRefresh={onGetPullRefresh}
         onEndReached={onLoadMore}

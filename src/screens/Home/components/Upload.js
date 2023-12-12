@@ -115,7 +115,7 @@ export default function UploadScreen(props) {
         )}
 
         <View style={tw.flex1}>
-          <Button style={[tw.selfCenter]} onPress={uploadFile} size="small">
+          <Button style={[tw.selfCenter]} onPress={uploadFile}>
             <Text style={{ color: "black" }}>Tiếp tục</Text>
           </Button>
         </View>
@@ -126,7 +126,7 @@ export default function UploadScreen(props) {
   return (
     <SafeAreaView style={[containerStyles.content]}>
       <View style={[tw.selfCenter]}>
-        <Button onPress={pickImage} size="small">
+        <Button onPress={pickImage}>
           <Text style={{ color: "black" }}>Chọn ảnh/video</Text>
         </Button>
       </View>

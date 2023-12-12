@@ -45,7 +45,7 @@ export const extendFunction = (store) => {
                         : "Đã có lỗi xảy ra!";
                 res.data = null;
                 console.log(message, "messagemessagemessage");
-                showToast(message);
+                // showToast(message);
             }
             return res;
         },
@@ -65,7 +65,7 @@ export const extendFunction = (store) => {
             )
                 message = error.response.data.message;
             console.log(message);
-            showToast(message);
+            // showToast(message);
 
             return Promise.reject(error);
         }
