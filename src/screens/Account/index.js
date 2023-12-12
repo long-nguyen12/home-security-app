@@ -38,7 +38,7 @@ export default function SettingsPage(props) {
       <ScrollView contentContainerStyle={tw.pY4}>
         <TouchableOpacity
           style={[tw.flexRow, tw.p4, tw.itemsCenter]}
-          onPress={() => preventBeforeLogin(CANHAN_PAGE)}
+          // onPress={() => preventBeforeLogin(CANHAN_PAGE)}
         >
           <MaterialCommunityIcons
             name="account-circle"

@@ -1,13 +1,10 @@
-import { Button, Text } from "@ui-kitten/components";
+import { Button, Modal, Text } from "@ui-kitten/components";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   Dimensions,
   Image,
-  ImageBackground,
-  PanResponder,
   TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
+  View
 } from "react-native";
 import { tw } from "react-native-tailwindcss";
 import { PRIMARY } from "../../../constants/colors";
@@ -15,16 +12,16 @@ import { containerStyles } from "../../../stylesContainer";
 
 import BackIcon from "../../../assets/icons/whitearrow.svg";
 
+import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Svg, { Circle, Polyline } from "react-native-svg";
 import { useSelector } from "react-redux";
 import { COMMON_APP } from "../../../constants";
-import Svg, { Circle, Polyline } from "react-native-svg";
-import { StyleSheet } from "react-native";
-import { postCoords } from "../../../epics-reducers/services/uploadServices";
-import LoadingService from "../../../components/Loading/LoadingService";
-import * as navigationService from "../../../epics-reducers/navigationServices";
 import * as ROUTES from "../../../constants/routes";
+import * as navigationService from "../../../epics-reducers/navigationServices";
 import { showToast } from "../../../epics-reducers/services/common";
+import { postCoords } from "../../../epics-reducers/services/uploadServices";
+import Loader from "../../App/Loader";
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
 
@@ -60,6 +57,7 @@ export default function DetectionAreaScreen(props) {
   const [points, setPoints] = useState([]);
   const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
   const [dataSource, setDataSource] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let uri = `${COMMON_APP.HOST_API}/thumbnail/${params.thumbnail}`;
@@ -123,7 +121,7 @@ export default function DetectionAreaScreen(props) {
 
   async function onSubmit() {
     if (points.length == 4) {
-      LoadingService.show();
+      setLoading(true);
       const { path } = params;
       let data = {};
       data.video = path;
@@ -138,7 +136,7 @@ export default function DetectionAreaScreen(props) {
       } else {
         showToast("Vui lòng thử lại");
       }
-      LoadingService.hide();
+      setLoading(false);
     } else {
       showToast("Vui lòng chọn đủ 4 điểm");
     }
@@ -150,6 +148,9 @@ export default function DetectionAreaScreen(props) {
 
   return (
     <SafeAreaView style={[containerStyles.content]}>
+      <Modal visible={loading} backdropStyle={styles.backdrop}>
+        <Loader />
+      </Modal>
       <View style={[tw.selfCenter, tw.mB2]}>
         <Text>Vui lòng chọn khu vực để phát hiện</Text>
       </View>
@@ -165,3 +166,9 @@ export default function DetectionAreaScreen(props) {
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  backdrop: {
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+});

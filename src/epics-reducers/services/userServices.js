@@ -2,6 +2,23 @@ import axios from "axios";
 import { COMMON_APP } from "../../constants/common";
 import { API } from "../../constants/api";
 
+export function userRegister(data) {
+  const url = `${COMMON_APP.HOST_API}${API.USER_DANGKY}`;
+  console.log(url)
+  return axios
+    .post(url, data)
+    .then((res) => {
+      if (res.data) {
+        return res.data;
+      } else {
+        return null;
+      }
+    })
+    .catch((error) => {
+      return null;
+    });
+}
+
 export function userLogin(data) {
   const url = `${COMMON_APP.HOST_API}${API.USER_DANGNHAP}`;
   return axios

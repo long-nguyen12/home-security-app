@@ -1,4 +1,4 @@
-import { Button, Input, Text } from "@ui-kitten/components";
+import { Button, Input, Modal, Text } from "@ui-kitten/components";
 import { Formik } from "formik";
 import React, { useLayoutEffect, useState } from "react";
 import {
@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  View
+  View,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { tw } from "react-native-tailwindcss";
@@ -18,11 +18,12 @@ import { PRIMARY } from "../../constants/colors";
 import {
   FORGOTPASSWORD_PAGE,
   LOGIN_PAGE,
-  REGISTER_PAGE
+  REGISTER_PAGE,
 } from "../../constants/routes";
 import { containerStyles } from "../../stylesContainer";
 import { userLoginRoutine } from "./saga/routines";
 import { LoginSchema } from "./schemas/schemas";
+import Loader from "../App/Loader";
 
 export default function LoginPage(props) {
   useLayoutEffect(() => {
@@ -41,6 +42,7 @@ export default function LoginPage(props) {
 
   const [hidePassword, setHidePassword] = useState(true);
   const [active, setActive] = useState(false);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const initialValues = {
@@ -49,11 +51,13 @@ export default function LoginPage(props) {
   };
 
   async function onFormSubmit(values) {
+    setLoading(true);
     const data = {
       username: values.username,
       password: values.password,
     };
     dispatch(userLoginRoutine.trigger(data));
+    setLoading(false);
   }
 
   const toggleSecureEntry = () => {
@@ -78,6 +82,9 @@ export default function LoginPage(props) {
 
   return (
     <SafeAreaView style={[containerStyles.content]}>
+      <Modal visible={loading} backdropStyle={styles.backdrop}>
+        <Loader />
+      </Modal>
       <KeyboardAwareScrollView contentContainerStyle={styles.content}>
         <View style={tw.mT4}>
           <Formik
@@ -146,7 +153,7 @@ export default function LoginPage(props) {
                     },
                   ]}
                 >
-                  <View>
+                  {/* <View>
                     <Text></Text>
                   </View>
                   <TouchableOpacity
@@ -159,7 +166,7 @@ export default function LoginPage(props) {
                     <Text style={containerStyles.helper_text_link}>
                       Quên mật khẩu?
                     </Text>
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                 </View>
                 <Button style={{ marginTop: 8 }} onPress={handleSubmit}>
                   <Text style={{ color: "black" }}>ĐĂNG NHẬP</Text>
@@ -185,5 +192,8 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     marginHorizontal: 20,
+  },
+  backdrop: {
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
 });

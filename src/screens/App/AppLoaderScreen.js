@@ -9,7 +9,7 @@ import * as ROUTES from "../../constants/routes";
 export default function AppLoaderScreen(props) {
     const { navigation } = props;
 
-    const token = useSelector((state) => state.auth.me);
+    const token = useSelector((state) => state.auth);
 
     React.useEffect(() => {
         if (token) {

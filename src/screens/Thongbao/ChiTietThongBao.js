@@ -61,7 +61,7 @@ export default function ChiTietThongBao(props) {
           source={{
             uri: `${COMMON_APP.HOST_API}/detection/${data.detection_path}`,
           }}
-          style={[tw.flex1, tw.wFull]}
+          style={[tw.hFull, tw._mT24]}
         />
       </View>
       {/* </ScrollView> */}

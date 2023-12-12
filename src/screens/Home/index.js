@@ -46,13 +46,6 @@ export default function HomePage(props) {
     const res = await userDeviceToken(data);
   }
 
-  function checkValidToken(loginRes) {
-    if (!isEmpty(loginRes) && loginRes.token !== CONSTANTS.ERROR_AUTHEN) {
-      return true;
-    }
-    return false;
-  }
-
   return (
     <SafeAreaView style={[containerStyles.content]}>
       <ScrollView contentContainerStyle={[tw.p0, tw.pB16]}>

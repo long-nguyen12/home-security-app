@@ -2,7 +2,7 @@ import * as Yup from "yup";
 const phoneRegExp = /^(84|0[3|5|7|8|9])+([0-9]{8})\b/;
 
 export const SignupSchema = Yup.object().shape({
-    fullname: Yup.string().required("Họ và tên không được bỏ trống"),
+    full_name: Yup.string().required("Họ và tên không được bỏ trống"),
     username: Yup.string()
         .min(2, "Tên tài khoản quá ngắn.")
         .required("Tên đăng nhập không được bỏ trống"),
@@ -12,10 +12,7 @@ export const SignupSchema = Yup.object().shape({
     re_password: Yup.string()
         .min(6, ({ min }) => `Mật khẩu cần ít nhất ${min} kí tự`)
         .oneOf([Yup.ref("password"), null], "Mật khẩu không khớp")
-        .required("Mật khẩu không được bỏ trống"),
-    phone: Yup.string()
-        .matches(phoneRegExp, "Số điện thoại không đúng định dạng")
-        .required("Số điện thoại không được bỏ trống"),
+        .required("Mật khẩu không được bỏ trống")
 });
 
 export const LoginSchema = Yup.object().shape({

@@ -226,6 +226,7 @@ export const API = {
   CANGHINHIEM_CTCACHLY: "/api/ca-nghi-nhiem/{0}/chi-tiet-cach-ly",
 
   USER_DANGNHAP: "/api/users/login",
+  USER_DANGKY: "/api/users/signup",
 
   USER_VERIFY_FORGOT_PASSWORD: "/api/citizen/xac-thuc-quen-mat-khau",
   USER_FORGET_PASSWORD: "/api/citizen/reset-password",

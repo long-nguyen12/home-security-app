@@ -9,6 +9,7 @@ import { containerStyles } from "../../stylesContainer";
 import { COMMON_APP } from "../../constants";
 import { timeFormatter } from "../../helper/dateFormat";
 
+import WarningIcon from "../../assets/icons/ico_warning.svg";
 export default function ChiTietLichSu(props) {
   const { data } = props.route.params;
   useLayoutEffect(() => {
@@ -50,9 +51,20 @@ export default function ChiTietLichSu(props) {
 
   return (
     <View style={[containerStyles.content, tw.pT4, tw.pX4]}>
-      <Text style={[tw.fontBold, tw.textJustify]}>
-        Phát hiện đối tượng trong vùng theo dõi
-      </Text>
+      {data.status ? (
+        <View style={[tw.flexRow, tw.itemsCenter]}>
+          <WarningIcon style={tw.mR1} />
+          <Text style={[tw.fontBold, tw.textJustify, tw.flex1]}>
+            Phát hiện đối tượng trong vùng theo dõi
+          </Text>
+        </View>
+      ) : (
+        <View style={[tw.flexRow, tw.itemsCenter]}>
+          <Text style={[tw.fontBold, tw.textJustify, tw.flex1]}>
+            Không phát hiện đối tượng trong vùng theo dõi
+          </Text>
+        </View>
+      )}
       <Text style={{ color: "#878787" }}>{timeFormatter(data.created_at)}</Text>
       <Image
         resizeMode="contain"
