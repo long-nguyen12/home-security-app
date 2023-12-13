@@ -1,6 +1,6 @@
-import { Text } from "@ui-kitten/components";
+import { Modal, Text } from "@ui-kitten/components";
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { FlatList, SafeAreaView, TouchableOpacity, View } from "react-native";
+import { FlatList, SafeAreaView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { tw } from "react-native-tailwindcss";
 import { useSelector } from "react-redux";
 import WarningIcon from "../../assets/icons/ico_warning.svg";
@@ -13,6 +13,7 @@ import { timeFormatter } from "../../helper/dateFormat";
 import { containerStyles } from "../../stylesContainer";
 
 import BackIcon from "../../assets/icons/whitearrow.svg";
+import Loader from "../App/Loader";
 
 const LOAD_STATUS = {
   NONE: 0,
@@ -60,6 +61,7 @@ export default function HistoryPage(props) {
 
   const [docs, setDocs] = useState([]);
   const [loadStatus, setLoadStatus] = useState(LOAD_STATUS.NONE);
+  const [loading, setLoading] = useState(false);
   let flatList = null;
 
   useEffect(() => {
@@ -69,9 +71,9 @@ export default function HistoryPage(props) {
   const user = useSelector((state) => state.auth);
 
   async function onGetRecords() {
-    LoadingService.show();
+    setLoading(true);
     let canhbao = await getHistory(page, 10);
-    LoadingService.hide();
+    setLoading(false);
     if (canhbao && canhbao.data) {
       return canhbao;
     }
@@ -175,6 +177,9 @@ export default function HistoryPage(props) {
 
   return (
     <SafeAreaView style={[containerStyles.content]}>
+      <Modal visible={loading} backdropStyle={styles.backdrop}>
+        <Loader />
+      </Modal>
       <FlatList
         ref={(c) => (flatList = c)}
         contentContainerStyle={[tw.p4]}
@@ -192,3 +197,9 @@ export default function HistoryPage(props) {
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  backdrop: {
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+  },
+});
